@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &-margin {
+    margin-bottom: 1rem;
+  }
+
+  &-forgot {
+    float: right;
+  }
+
+  &-footer {
+    text-align: center;
+    margin: 0;
+  }
+}

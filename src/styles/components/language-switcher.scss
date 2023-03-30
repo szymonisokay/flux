@@ -1,0 +1,10 @@
+.language-switcher {
+  display: flex;
+  justify-content: center;
+
+  .segment-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}

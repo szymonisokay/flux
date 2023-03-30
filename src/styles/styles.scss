@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./colors/colors.scss";
+
+@import "./vendors/fonts.scss", "./vendors/global.scss", "./vendors/form.scss";
+
+@import "./components/flex-wrapper.scss", "./components/auth.scss",
+  "./components/language-switcher.scss";
