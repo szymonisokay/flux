@@ -1,0 +1,75 @@
+<div class="auth-container">
+  <img class="logo" src="../../../../assets/images/Logo.svg" alt="Logo" />
+
+  <nz-card style="min-width: 80%">
+    <p nz-typography>{{ "loginMotto" | translate }}</p>
+
+    <form class="form" (submit)="onSubmit($event)">
+      <ng-container [formGroup]="form">
+        <nz-form-item>
+          <nz-form-control [nzErrorTip]="'emptyFieldError' | translate">
+            <nz-input-group nzPrefixIcon="user" nzSize="large">
+              <input
+                type="text"
+                nz-input
+                formControlName="username"
+                [placeholder]="'username' | translate"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control [nzErrorTip]="'emptyFieldError' | translate">
+            <nz-input-group nzPrefixIcon="lock" nzSize="large">
+              <input
+                type="password"
+                nz-input
+                formControlName="password"
+                [placeholder]="'password' | translate"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <div nz-row class="form-margin">
+          <div nz-col [nzSpan]="12">
+            <label nz-checkbox formControlName="remember">
+              <span>{{ "remember" | translate }}</span>
+            </label>
+          </div>
+          <div nz-col [nzSpan]="12">
+            <a class="form-forgot">{{ "forgotPassword" | translate }}</a>
+          </div>
+        </div>
+
+        <ng-container *ngIf="status$ | async as status">
+          <div class="form-margin">
+            <button
+              nzSize="large"
+              [nzLoading]="status === 'loading'"
+              nz-button
+              nzType="primary"
+              nzBlock
+            >
+              {{ "signIn" | translate }}
+            </button>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <p class="form-footer">
+        {{ "noAccount" | translate }}
+        <span nz-typography>
+          <a [routerLink]="['/register']">
+            {{ "signUp" | translate }}
+            <Link />
+          </a>
+        </span>
+      </p>
+    </form>
+  </nz-card>
+</div>
+
+<shared-language-switcher
+  [currentLangIndex]="currentLang$ | async"
+  (emitLanguge)="onLanguageChange($event)"
+></shared-language-switcher>
