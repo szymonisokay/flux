@@ -1,0 +1,13 @@
+{
+  "loginMotto": "Wejdź na następny poziom z Flux!",
+  "emptyFieldError": "Pole nie może być puste!",
+  "username": "Nazwa użytkownika",
+  "password": "Hasło",
+  "remember": "Pamiętaj mnie",
+  "forgotPassword": "Zapomniano hasło?",
+  "signIn": "Zaloguj się",
+  "signUp": "Stwórz je teraz!",
+  "noAccount": "Nie masz konta?",
+  "english": "English",
+  "polish": "Polski"
+}

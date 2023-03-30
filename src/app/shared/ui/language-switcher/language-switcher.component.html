@@ -1,0 +1,27 @@
+<nz-affix [nzOffsetBottom]="30" style="height: 0">
+  <div class="language-switcher">
+    <nz-segmented
+      [nzLabelTemplate]="templateRef"
+      [nzOptions]="languageOptions"
+      nzSize="large"
+      [ngModel]="currentLangIndex"
+      (nzValueChange)="onLanguageChange($event)"
+    ></nz-segmented>
+    <ng-template #temp let-index="index">
+      <ng-container [ngSwitch]="index">
+        <ng-container *ngSwitchCase="0">
+          <div class="segment-wrapper">
+            <span class="fi fi-us"></span>
+            <div>{{ "english" | translate }}</div>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="1">
+          <div class="segment-wrapper">
+            <span class="fi fi-pl"></span>
+            <div>{{ "polish" | translate }}</div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-template>
+  </div>
+</nz-affix>

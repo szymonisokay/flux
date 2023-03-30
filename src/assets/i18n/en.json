@@ -1,0 +1,13 @@
+{
+  "loginMotto": "Level up your gym experience with Flux!",
+  "emptyFieldError": "Field cannot be empty!",
+  "username": "Username",
+  "password": "Password",
+  "remember": "Remember me",
+  "forgotPassword": "Forgot password?",
+  "signIn": "Sign In",
+  "signUp": "Sign Up",
+  "noAccount": "Don't have an account?",
+  "english": "English",
+  "polish": "Polski"
+}
