@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { NzSegmentedOptions } from 'ng-zorro-antd/segmented';
 import { tap } from 'rxjs';
 import { login } from 'src/app/shared/data-access/auth/auth.actions';
 import { authStatusSelector } from 'src/app/shared/data-access/auth/auth.selectors';
@@ -11,12 +10,13 @@ import { AppState } from 'src/app/shared/interfaces/app-state.interface';
 @Component({
   selector: 'auth-login',
   templateUrl: './login.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent implements OnInit {
-  form: FormGroup = this.fb.group({
-    username: ['', Validators.required],
-    password: ['', [Validators.required, Validators.minLength(8)]],
-    remember: [false],
+export class LoginComponent {
+  loginForm: FormGroup = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
+    rememberMe: [false],
   });
 
   status$ = this.store.select(authStatusSelector);
@@ -31,12 +31,20 @@ export class LoginComponent implements OnInit {
     private translateService: TranslationService
   ) {}
 
-  ngOnInit(): void {}
-
   onSubmit(e: Event) {
     e.preventDefault();
-    console.log(this.form);
-    this.store.dispatch(login({ user: this.form.value }));
+    if (this.loginForm.invalid) {
+      Object.values(this.loginForm.controls).forEach((control) => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+
+      return;
+    }
+
+    this.store.dispatch(login({ user: this.loginForm.value }));
   }
 
   onLanguageChange(index: number) {

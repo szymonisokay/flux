@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
-import { login } from 'src/app/shared/data-access/auth/auth.actions';
+import { login, register } from 'src/app/shared/data-access/auth/auth.actions';
 import { authStatusSelector } from 'src/app/shared/data-access/auth/auth.selectors';
 import { TranslationService } from 'src/app/shared/data-access/translation/translation.service';
 import { AppState } from 'src/app/shared/interfaces/app-state.interface';
 
+const passwordPattern =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
+
 @Component({
   selector: 'auth-register',
   templateUrl: './register.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent {
-  form: FormGroup = this.fb.group({
+  registerForm: FormGroup = this.fb.group({
     username: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
+    password: ['', [Validators.required, Validators.pattern(passwordPattern)]],
   });
 
   status$ = this.store.select(authStatusSelector);
@@ -32,8 +36,19 @@ export class RegisterComponent {
 
   onSubmit(e: Event) {
     e.preventDefault();
-    console.log(this.form);
-    this.store.dispatch(login({ user: this.form.value }));
+
+    if (this.registerForm.invalid) {
+      Object.values(this.registerForm.controls).forEach((control) => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+
+      return;
+    }
+
+    this.store.dispatch(register({ user: this.registerForm.value }));
   }
 
   onLanguageChange(index: number) {

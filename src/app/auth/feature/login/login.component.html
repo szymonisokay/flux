@@ -2,65 +2,78 @@
   <img class="logo" src="../../../../assets/images/Logo.svg" alt="Logo" />
 
   <nz-card style="min-width: 80%">
-    <p nz-typography>{{ "loginMotto" | translate }}</p>
+    <p nz-typography>{{ "auth.loginMotto" | translate }}</p>
 
-    <form class="form" (submit)="onSubmit($event)">
-      <ng-container [formGroup]="form">
-        <nz-form-item>
-          <nz-form-control [nzErrorTip]="'emptyFieldError' | translate">
-            <nz-input-group nzPrefixIcon="user" nzSize="large">
-              <input
-                type="text"
-                nz-input
-                formControlName="username"
-                [placeholder]="'username' | translate"
-              />
-            </nz-input-group>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-control [nzErrorTip]="'emptyFieldError' | translate">
-            <nz-input-group nzPrefixIcon="lock" nzSize="large">
-              <input
-                type="password"
-                nz-input
-                formControlName="password"
-                [placeholder]="'password' | translate"
-              />
-            </nz-input-group>
-          </nz-form-control>
-        </nz-form-item>
-        <div nz-row class="form-margin">
-          <div nz-col [nzSpan]="12">
-            <label nz-checkbox formControlName="remember">
-              <span>{{ "remember" | translate }}</span>
-            </label>
-          </div>
-          <div nz-col [nzSpan]="12">
-            <a class="form-forgot">{{ "forgotPassword" | translate }}</a>
-          </div>
+    <form class="form" [formGroup]="loginForm" (submit)="onSubmit($event)">
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="emailErrorTemplate">
+          <nz-input-group nzPrefixIcon="mail" nzSize="large">
+            <input
+              type="text"
+              nz-input
+              formControlName="email"
+              [placeholder]="'auth.email' | translate"
+            />
+          </nz-input-group>
+
+          <ng-template #emailErrorTemplate let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              {{ "inputErrors.emptyFieldError" | translate }}
+            </ng-container>
+            <ng-container *ngIf="control.hasError('email')">
+              {{ "inputErrors.validEmailError" | translate }}
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="passwordErrorTemplate">
+          <nz-input-group nzPrefixIcon="lock" nzSize="large">
+            <input
+              type="password"
+              nz-input
+              formControlName="password"
+              [placeholder]="'auth.password' | translate"
+            />
+          </nz-input-group>
+
+          <ng-template #passwordErrorTemplate let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              {{ "inputErrors.emptyFieldError" | translate }}
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <div nz-row class="form-margin">
+        <div nz-col [nzSpan]="12">
+          <label nz-checkbox formControlName="rememberMe">
+            <span>{{ "auth.remember" | translate }}</span>
+          </label>
         </div>
+        <div nz-col [nzSpan]="12">
+          <a class="form-forgot">{{ "auth.forgotPassword" | translate }}</a>
+        </div>
+      </div>
 
-        <ng-container *ngIf="status$ | async as status">
-          <div class="form-margin">
-            <button
-              nzSize="large"
-              [nzLoading]="status === 'loading'"
-              nz-button
-              nzType="primary"
-              nzBlock
-            >
-              {{ "signIn" | translate }}
-            </button>
-          </div>
-        </ng-container>
+      <ng-container *ngIf="status$ | async as status">
+        <div class="form-margin">
+          <button
+            nzSize="large"
+            [nzLoading]="status === 'loading'"
+            nz-button
+            nzType="primary"
+            nzBlock
+          >
+            {{ "auth.signIn" | translate }}
+          </button>
+        </div>
       </ng-container>
 
       <p class="form-footer">
-        {{ "noAccount" | translate }}
+        {{ "auth.noAccount" | translate }}
         <span nz-typography>
           <a [routerLink]="['/register']">
-            {{ "signUp" | translate }}
+            {{ "auth.signUp" | translate }}
             <Link />
           </a>
         </span>

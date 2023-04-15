@@ -1,68 +1,95 @@
 <div class="auth-container">
   <img class="logo" src="../../../../assets/images/Logo.svg" alt="Logo" />
 
-  <nz-card style="min-width: 80%">
-    <p nz-typography>{{ "loginMotto" | translate }}</p>
+  <nz-card style="width: 85%">
+    <p nz-typography>{{ "auth.loginMotto" | translate }}</p>
 
-    <form class="form" (submit)="onSubmit($event)">
-      <ng-container [formGroup]="form">
-        <nz-form-item>
-          <nz-form-control [nzErrorTip]="'emptyFieldError' | translate">
-            <nz-input-group nzPrefixIcon="user" nzSize="large">
-              <input
-                type="text"
-                nz-input
-                formControlName="username"
-                [placeholder]="'username' | translate"
-              />
-            </nz-input-group>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-control [nzErrorTip]="'emptyFieldError' | translate">
-            <nz-input-group nzPrefixIcon="mail" nzSize="large">
-              <input
-                type="email"
-                nz-input
-                formControlName="email"
-                [placeholder]="'email' | translate"
-              />
-            </nz-input-group>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-control [nzErrorTip]="'emptyFieldError' | translate">
-            <nz-input-group nzPrefixIcon="lock" nzSize="large">
-              <input
-                type="password"
-                nz-input
-                formControlName="password"
-                [placeholder]="'password' | translate"
-              />
-            </nz-input-group>
-          </nz-form-control>
-        </nz-form-item>
+    <form
+      class="form"
+      [formGroup]="registerForm"
+      #form="ngForm"
+      (submit)="onSubmit($event)"
+    >
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="usernameErrorTemplate">
+          <nz-input-group nzPrefixIcon="user" nzSize="large">
+            <input
+              type="text"
+              nz-input
+              formControlName="username"
+              [placeholder]="'auth.username' | translate"
+            />
+          </nz-input-group>
 
-        <ng-container *ngIf="status$ | async as status">
-          <div class="form-margin">
-            <button
-              nzSize="large"
-              [nzLoading]="status === 'loading'"
-              nz-button
-              nzType="primary"
-              nzBlock
-            >
-              {{ "signUp" | translate }}
-            </button>
-          </div>
-        </ng-container>
+          <ng-template #usernameErrorTemplate let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              {{ "inputErrors.emptyFieldError" | translate }}
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="emailErrorTemplate">
+          <nz-input-group nzPrefixIcon="mail" nzSize="large">
+            <input
+              type="email"
+              nz-input
+              formControlName="email"
+              [placeholder]="'auth.email' | translate"
+            />
+          </nz-input-group>
+
+          <ng-template #emailErrorTemplate let-control>
+            <ng-container *ngIf="control.hasError('email')">
+              {{ "inputErrors.validEmailError" | translate }}
+            </ng-container>
+            <ng-container *ngIf="control.hasError('required')">
+              {{ "inputErrors.emptyFieldError" | translate }}
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="passwordErrorTemplate">
+          <nz-input-group nzPrefixIcon="lock" nzSize="large">
+            <input
+              type="password"
+              nz-input
+              formControlName="password"
+              [placeholder]="'auth.password' | translate"
+            />
+          </nz-input-group>
+
+          <ng-template #passwordErrorTemplate let-control>
+            <ng-container *ngIf="control.hasError('pattern')">
+              {{ "inputErrors.patternError" | translate }}
+            </ng-container>
+            <ng-container *ngIf="control.hasError('required')">
+              {{ "inputErrors.emptyFieldError" | translate }}
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+
+      <ng-container *ngIf="status$ | async as status">
+        <div class="form-margin">
+          <button
+            nzSize="large"
+            [nzLoading]="status === 'loading'"
+            nz-button
+            nzType="primary"
+            nzBlock
+          >
+            {{ "auth.signUp" | translate }}
+          </button>
+        </div>
       </ng-container>
 
       <p class="form-footer">
-        {{ "haveAccount" | translate }}
+        {{ "auth.haveAccount" | translate }}
         <span nz-typography>
           <a [routerLink]="['/login']">
-            {{ "signIn" | translate }}
+            {{ "auth.signIn" | translate }}
             <Link />
           </a>
         </span>

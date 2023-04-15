@@ -1,13 +1,23 @@
 {
-  "loginMotto": "Level up your gym experience with Flux!",
-  "emptyFieldError": "Field cannot be empty!",
-  "username": "Username",
-  "password": "Password",
-  "remember": "Remember me",
-  "forgotPassword": "Forgot password?",
-  "signIn": "Sign In",
-  "signUp": "Sign Up",
-  "noAccount": "Don't have an account?",
-  "english": "English",
-  "polish": "Polski"
+  "auth": {
+    "email": "Email",
+    "username": "Username",
+    "password": "Password",
+    "remember": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "loginMotto": "Level up your gym experience with Flux!"
+  },
+  "inputErrors": {
+    "emptyFieldError": "Field cannot be empty",
+    "patternError": "Password must be at least 8 characters long containing lowercase and uppercase letters, numbers and special chracters",
+    "validEmailError": "Please provide valid email address"
+  },
+  "languages": {
+    "english": "English",
+    "polish": "Polski"
+  }
 }

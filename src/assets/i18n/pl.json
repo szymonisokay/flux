@@ -1,13 +1,23 @@
 {
-  "loginMotto": "Wejdź na następny poziom z Flux!",
-  "emptyFieldError": "Pole nie może być puste!",
-  "username": "Nazwa użytkownika",
-  "password": "Hasło",
-  "remember": "Pamiętaj mnie",
-  "forgotPassword": "Zapomniano hasło?",
-  "signIn": "Zaloguj się",
-  "signUp": "Stwórz je teraz!",
-  "noAccount": "Nie masz konta?",
-  "english": "English",
-  "polish": "Polski"
+  "auth": {
+    "email": "Adres email",
+    "username": "Nazwa użytkownika",
+    "password": "Hasło",
+    "remember": "Pamiętaj mnie",
+    "forgotPassword": "Zapomniano hasło?",
+    "signIn": "Zaloguj się",
+    "signUp": "Zarejestruj się",
+    "noAccount": "Nie masz konta?",
+    "haveAccount": "Masz konto?",
+    "loginMotto": "Wejdź na następny poziom z Flux!"
+  },
+  "inputErrors": {
+    "emptyFieldError": "Pole nie może być puste",
+    "patternError": "Hasło musi posiadać co najmniej 8 znaków, duże i małe litery, cyfry oraz znaki specjalne",
+    "validEmailError": "Proszę podać poprawny adres email"
+  },
+  "languages": {
+    "english": "English",
+    "polish": "Polski"
+  }
 }

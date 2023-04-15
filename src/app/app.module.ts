@@ -13,12 +13,20 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SharedModule } from './shared/shared.module';
 import { RegisterModule } from './auth/feature/register/register.module';
 import { RegisterRoutingModule } from './auth/feature/register/register-routing.module';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './shared/data-access/auth/auth.effects';
+import { ToastrModule } from 'ngx-toastr';
+import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 
 registerLocaleData(en);
 
@@ -30,6 +38,7 @@ registerLocaleData(en);
     LoginModule,
     LoginRoutingModule,
     StoreModule.forRoot({}),
+    EffectsModule.forRoot(AuthEffects),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: !isDevMode(),
@@ -47,11 +56,22 @@ registerLocaleData(en);
         deps: [HttpClient],
       },
     }),
+    ToastrModule.forRoot({
+      preventDuplicates: true,
+      positionClass: 'toast-top-right',
+      timeOut: 3000,
+      tapToDismiss: true,
+      progressBar: true,
+      progressAnimation: 'decreasing',
+    }),
     SharedModule,
     RegisterModule,
     RegisterRoutingModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
