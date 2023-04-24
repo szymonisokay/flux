@@ -8,3 +8,8 @@ export const authStatusSelector = createSelector(
   authFeatureSelector,
   (state: AuthState) => state.status
 );
+
+export const authUserSelector = createSelector(
+  authFeatureSelector,
+  (state: AuthState) => state.user
+);

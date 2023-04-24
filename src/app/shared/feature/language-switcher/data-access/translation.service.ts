@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { defaultLanguages } from '../../interfaces/translate-languages.interface';
+import { defaultLanguages } from '../../../interfaces/translate-languages.interface';
 
 @Injectable({ providedIn: 'root' })
 export class TranslationService {

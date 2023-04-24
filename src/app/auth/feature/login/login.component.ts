@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
 import { login } from 'src/app/shared/data-access/auth/auth.actions';
 import { authStatusSelector } from 'src/app/shared/data-access/auth/auth.selectors';
-import { TranslationService } from 'src/app/shared/data-access/translation/translation.service';
+import { TranslationService } from 'src/app/shared/feature/language-switcher/data-access/translation.service';
 import { AppState } from 'src/app/shared/interfaces/app-state.interface';
 
 @Component({

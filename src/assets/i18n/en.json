@@ -19,5 +19,7 @@
   "languages": {
     "english": "English",
     "polish": "Polski"
-  }
+  },
+
+  "logout": "Log out"
 }

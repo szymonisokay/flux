@@ -1,7 +1,7 @@
 <div class="auth-container">
   <img class="logo" src="../../../../assets/images/Logo.svg" alt="Logo" />
 
-  <nz-card style="min-width: 80%">
+  <nz-card style="width: 95%">
     <p nz-typography>{{ "auth.loginMotto" | translate }}</p>
 
     <form class="form" [formGroup]="loginForm" (submit)="onSubmit($event)">
@@ -60,6 +60,7 @@
           <button
             nzSize="large"
             [nzLoading]="status === 'loading'"
+            [disabled]="status === 'loading'"
             nz-button
             nzType="primary"
             nzBlock

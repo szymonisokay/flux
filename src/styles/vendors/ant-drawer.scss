@@ -1,0 +1,45 @@
+.ant-drawer {
+  &-content-wrapper {
+    width: 70% !important;
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+
+    .main-menu {
+      &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        flex: 2;
+
+        &-item {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          width: 100%;
+          background: #f9f9f9;
+          padding: 10px 20px;
+          color: $black-color;
+          border-radius: 3px;
+          font-size: 16px;
+
+          transition: all 0.3s ease;
+
+          span {
+            transition: all 0.3s ease;
+          }
+
+          &:hover {
+            background: $light-background;
+
+            span {
+              color: $accent-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

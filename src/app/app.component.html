@@ -1,1 +1,8 @@
-<router-outlet></router-outlet>
+<ng-container *ngIf="user$ | async">
+  <shared-topbar></shared-topbar>
+</ng-container>
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+
+<shared-sidebar></shared-sidebar>

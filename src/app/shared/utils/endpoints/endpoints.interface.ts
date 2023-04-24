@@ -5,4 +5,6 @@ export interface Endpoint {
 export interface Endpoints {
   login: Endpoint;
   register: Endpoint;
+
+  userInfo: Endpoint;
 }

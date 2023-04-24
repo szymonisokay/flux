@@ -1,9 +1,9 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { APP_INITIALIZER, NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { LoginModule } from './auth/feature/login/login.module';
 import { LoginRoutingModule } from './auth/feature/login/login-routing.module';
@@ -27,6 +27,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './shared/data-access/auth/auth.effects';
 import { ToastrModule } from 'ngx-toastr';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
+import { appInit } from './shared/data-access/app-init/app-init';
+import { TokenInterceptor } from './shared/interceptors/token.interceptor';
+import { DashboardModule } from './dashboard/feature/dashboard/dashboard.module';
+import { DashboardRoutingModule } from './dashboard/feature/dashboard/dashboard-routing.module';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 
 registerLocaleData(en);
 
@@ -35,8 +41,6 @@ registerLocaleData(en);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginModule,
-    LoginRoutingModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot(AuthEffects),
     StoreDevtoolsModule.instrument({
@@ -64,13 +68,26 @@ registerLocaleData(en);
       progressBar: true,
       progressAnimation: 'decreasing',
     }),
+    NzLayoutModule,
+    NzDrawerModule,
     SharedModule,
+    LoginModule,
+    LoginRoutingModule,
     RegisterModule,
     RegisterRoutingModule,
+    DashboardModule,
+    DashboardRoutingModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInit,
+      deps: [Store],
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

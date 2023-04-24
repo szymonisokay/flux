@@ -1,0 +1,38 @@
+<nz-drawer
+  nzPlacement="left"
+  [nzClosable]="false"
+  [nzTitle]="titleTemplate"
+  [nzFooter]="footerTemplate"
+  [nzVisible]="(isOpened$ | async) || false"
+  (nzOnClose)="onCloseSidebar()"
+>
+  <ng-template #titleTemplate>
+    <img src="../../../../assets/images/Logo.svg" alt="Logo" />
+  </ng-template>
+
+  <ng-template #footerTemplate>
+    <span>Copyright&copy; Szymon Wałach</span>
+  </ng-template>
+
+  <ng-container *nzDrawerContent>
+    <div class="main-menu__content">
+      <a *ngFor="let item of menuItems" class="main-menu__content-item">
+        <span *ngIf="item.icon" nz-icon [nzType]="item.icon"></span>
+        {{ item.text | translate }}
+      </a>
+    </div>
+
+    <div class="main-menu__logout">
+      <button
+        nz-button
+        nzBlock
+        nzType="default"
+        nzSize="large"
+        (click)="onLogout()"
+      >
+        <span nz-icon nzType="logout"></span>
+        {{ "logout" | translate }}
+      </button>
+    </div>
+  </ng-container>
+</nz-drawer>

@@ -1,0 +1,38 @@
+<ng-container *ngIf="user$ | async as user">
+  <header class="header">
+    <button
+      nz-button
+      nzType="default"
+      nzSize="large"
+      (click)="setSidebarStatus()"
+    >
+      <span nz-icon nzType="menu"></span>
+    </button>
+
+    <button
+      nz-button
+      nz-dropdown
+      nzType="text"
+      nzSize="large"
+      nzTrigger="click"
+      nzPlacement="bottomRight"
+      [nzDropdownMenu]="menu"
+    >
+      {{ user.username }}
+    </button>
+  </header>
+
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <div nz-menu>
+      <div nz-menu-item class="account-details">
+        <strong>{{ user.username }}</strong>
+        <span>{{ user.email }}</span>
+      </div>
+      <div nz-menu-divider></div>
+      <div nz-menu-item>Account details</div>
+      <div nz-menu-item>Exercise history</div>
+      <div nz-menu-divider></div>
+      <div nz-menu-item>Logout</div>
+    </div>
+  </nz-dropdown-menu>
+</ng-container>

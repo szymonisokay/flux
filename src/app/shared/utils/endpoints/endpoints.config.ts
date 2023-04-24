@@ -8,4 +8,6 @@ export const getEndpoint = (endpoint: keyof Endpoints): Endpoint => {
 export const endpoints: Endpoints = {
   login: { path: '/auth/login' },
   register: { path: '/auth/register' },
+
+  userInfo: { path: '/users/info' },
 };

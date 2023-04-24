@@ -2,7 +2,7 @@
 @import "./colors/colors.scss";
 
 @import "./vendors/fonts.scss", "./vendors/global.scss", "./vendors/form.scss",
-  "./vendors/ant-input.scss";
+  "./vendors/ant-input.scss", "./vendors/ant-drawer.scss";
 
 @import "./components/flex-wrapper.scss", "./components/auth.scss",
-  "./components/language-switcher.scss";
+  "./components/language-switcher.scss", "./components/header.scss";
