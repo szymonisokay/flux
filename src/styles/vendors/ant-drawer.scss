@@ -11,7 +11,7 @@
       &__content {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 10px;
         flex: 2;
 
         &-item {
@@ -19,23 +19,25 @@
           gap: 10px;
           align-items: center;
           width: 100%;
-          background: #f9f9f9;
-          padding: 10px 20px;
-          color: $black-color;
+          // background: #f9f9f9;
+          padding: 8px 12px;
+          color: #7b7f9a;
           border-radius: 3px;
-          font-size: 16px;
+          // font-size: 16px;
 
           transition: all 0.3s ease;
 
           span {
+            font-size: 16px;
             transition: all 0.3s ease;
           }
 
           &:hover {
-            background: $light-background;
+            background: #e7eced;
+            color: #0c0c0e;
 
             span {
-              color: $accent-color;
+              color: #0c0c0e;
             }
           }
         }

@@ -2,7 +2,9 @@
 @import "./colors/colors.scss";
 
 @import "./vendors/fonts.scss", "./vendors/global.scss", "./vendors/form.scss",
-  "./vendors/ant-input.scss", "./vendors/ant-drawer.scss";
+  "./vendors/ant-input.scss", "./vendors/ant-drawer.scss",
+  "./vendors/ant-dropdown.scss";
 
 @import "./components/flex-wrapper.scss", "./components/auth.scss",
-  "./components/language-switcher.scss", "./components/header.scss";
+  "./components/language-switcher.scss", "./components/header.scss",
+  "./components/dashboard.scss";

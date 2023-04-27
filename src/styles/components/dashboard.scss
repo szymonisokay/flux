@@ -1,0 +1,29 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+
+  &-item {
+    background: #fff;
+    height: 100px;
+    border-radius: 2px;
+    border: 1px solid #f0f0f0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+
+    .cover {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 100%;
+      object-fit: cover;
+      clip-path: polygon(48% 0, 100% 0, 100% 100%, 0% 100%);
+      filter: grayscale(1);
+    }
+  }
+}
