@@ -2,9 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StoreModule } from '@ngrx/store';
 
-import { reducers } from '../../../shared/data-access/auth/auth.reducer';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -24,7 +22,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    StoreModule.forFeature('auth', reducers),
     NzButtonModule,
     NzFormModule,
     NzInputModule,
