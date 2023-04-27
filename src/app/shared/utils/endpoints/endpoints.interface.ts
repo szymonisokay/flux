@@ -7,4 +7,9 @@ export interface Endpoints {
   register: Endpoint;
 
   userInfo: Endpoint;
+
+  // Rapid API exercises
+  rapidApiAttributes: Endpoint;
+  rapidApiExercises: Endpoint;
+  rapidApiExercise: Endpoint;
 }
