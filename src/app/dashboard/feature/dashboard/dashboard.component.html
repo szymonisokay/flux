@@ -1,1 +1,8 @@
-dashboard
+<div class="dashboard">
+  <nz-space [style]="{ justifyContent: 'space-between' }">
+    <h4 nz-typography>{{ "latestTrainings" | translate }}</h4>
+
+    <a nz-button nzType="link">Show all</a>
+  </nz-space>
+  <flux-carousel></flux-carousel>
+</div>
