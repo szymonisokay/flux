@@ -24,15 +24,15 @@ import { SharedModule } from './shared/shared.module';
 import { RegisterModule } from './auth/feature/register/register.module';
 import { RegisterRoutingModule } from './auth/feature/register/register-routing.module';
 import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from './shared/data-access/auth/auth.effects';
 import { ToastrModule } from 'ngx-toastr';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { appInit } from './shared/data-access/app-init/app-init';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { DashboardModule } from './dashboard/feature/dashboard/dashboard.module';
 import { DashboardRoutingModule } from './dashboard/feature/dashboard/dashboard-routing.module';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { appEffects, appReducers } from './shared/data-access/ngrx-global';
+import { ExercisesModule } from './exercises/feature/exercises/exercises.module';
+import { ExercisesRoutingModule } from './exercises/feature/exercises/exercises-routing.module';
 
 registerLocaleData(en);
 
@@ -41,8 +41,8 @@ registerLocaleData(en);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot(AuthEffects),
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot(appEffects),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: !isDevMode(),
@@ -68,8 +68,6 @@ registerLocaleData(en);
       progressBar: true,
       progressAnimation: 'decreasing',
     }),
-    NzLayoutModule,
-    NzDrawerModule,
     SharedModule,
     LoginModule,
     LoginRoutingModule,
@@ -77,6 +75,8 @@ registerLocaleData(en);
     RegisterRoutingModule,
     DashboardModule,
     DashboardRoutingModule,
+    ExercisesModule,
+    ExercisesRoutingModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
