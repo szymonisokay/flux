@@ -9,17 +9,14 @@
       <span nz-icon nzType="menu"></span>
     </button>
 
-    <button
-      nz-button
+    <nz-avatar
       nz-dropdown
-      nzType="text"
-      nzSize="large"
       nzTrigger="click"
       nzPlacement="bottomRight"
+      nzIcon="user"
       [nzDropdownMenu]="menu"
-    >
-      {{ user.username }}
-    </button>
+      [nzSrc]="user.avatar"
+    ></nz-avatar>
   </header>
 
   <nz-dropdown-menu #menu="nzDropdownMenu">

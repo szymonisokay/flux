@@ -7,7 +7,12 @@
   (nzOnClose)="onCloseSidebar()"
 >
   <ng-template #titleTemplate>
-    <img src="../../../../assets/images/Logo.svg" alt="Logo" />
+    <img
+      routerLink="/"
+      (click)="removeSidebar()"
+      src="../../../../assets/images/Logo.svg"
+      alt="Logo"
+    />
   </ng-template>
 
   <ng-template #footerTemplate>
@@ -16,7 +21,12 @@
 
   <ng-container *nzDrawerContent>
     <div class="main-menu__content">
-      <a *ngFor="let item of menuItems" class="main-menu__content-item">
+      <a
+        [routerLink]="item.path"
+        *ngFor="let item of menuItems"
+        class="main-menu__content-item"
+        (click)="removeSidebar()"
+      >
         <span *ngIf="item.icon" nz-icon [nzType]="item.icon"></span>
         {{ item.text | translate }}
       </a>

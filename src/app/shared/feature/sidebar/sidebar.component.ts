@@ -21,6 +21,10 @@ export class SidebarComponent {
     this.sidebarService.setIsOpenedStatus(false);
   }
 
+  removeSidebar() {
+    this.onCloseSidebar();
+  }
+
   onLogout() {
     this.store.dispatch(logout({ message: 'logout' }));
     this.onCloseSidebar();
