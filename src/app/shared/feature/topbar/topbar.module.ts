@@ -17,4 +17,4 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
   declarations: [TopbarComponent],
   exports: [TopbarComponent],
 })
-export class TopbarModule {}
+export class SharedTopbarModule {}

@@ -19,4 +19,4 @@ import { RouterModule } from '@angular/router';
   declarations: [SidebarComponent],
   exports: [SidebarComponent],
 })
-export class SidebarModule {}
+export class SharedSidebarModule {}

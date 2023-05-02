@@ -20,7 +20,6 @@ import {
 } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { SharedModule } from './shared/shared.module';
 import { RegisterModule } from './auth/feature/register/register.module';
 import { RegisterRoutingModule } from './auth/feature/register/register-routing.module';
 import { EffectsModule } from '@ngrx/effects';
@@ -33,6 +32,8 @@ import { DashboardRoutingModule } from './dashboard/feature/dashboard/dashboard-
 import { appEffects, appReducers } from './shared/data-access/ngrx-global';
 import { ExercisesModule } from './exercises/feature/exercises/exercises.module';
 import { ExercisesRoutingModule } from './exercises/feature/exercises/exercises-routing.module';
+import { SharedTopbarModule } from './shared/feature/topbar/topbar.module';
+import { SharedSidebarModule } from './shared/feature/sidebar/sidebar.module';
 
 registerLocaleData(en);
 
@@ -68,7 +69,8 @@ registerLocaleData(en);
       progressBar: true,
       progressAnimation: 'decreasing',
     }),
-    SharedModule,
+    SharedTopbarModule,
+    SharedSidebarModule,
     LoginModule,
     LoginRoutingModule,
     RegisterModule,

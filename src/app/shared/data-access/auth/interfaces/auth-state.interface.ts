@@ -1,4 +1,4 @@
-import { Status } from './status.interface';
+import { Status } from '../../../interfaces/status.interface';
 import { User } from './user.interface';
 
 export interface AuthState {

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { DashboardComponent } from './dashboard.component';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '../../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { DashboardItemComponent } from '../../ui/dashboard-item/dashboard-item.component';
 import { NzCardModule } from 'ng-zorro-antd/card';
@@ -15,7 +14,6 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule,
     RouterModule,
     TranslateModule,
     NzCardModule,

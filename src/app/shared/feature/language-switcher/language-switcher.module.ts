@@ -20,4 +20,4 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
   ],
   exports: [LanguageSwitcherComponent],
 })
-export class LanguageSwitcherModule {}
+export class SharedLanguageSwitcherModule {}

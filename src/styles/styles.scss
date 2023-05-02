@@ -3,8 +3,9 @@
 
 @import "./vendors/fonts.scss", "./vendors/global.scss", "./vendors/form.scss",
   "./vendors/ant-input.scss", "./vendors/ant-drawer.scss",
-  "./vendors/ant-dropdown.scss";
+  "./vendors/ant-dropdown.scss", "./vendors/ant-pagination.scss";
 
 @import "./components/flex-wrapper.scss", "./components/auth.scss",
   "./components/language-switcher.scss", "./components/header.scss",
-  "./components/dashboard.scss";
+  "./components/dashboard.scss", "./components/list.scss",
+  "./components/exercise-card.scss";

@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
 import { NzAffixModule } from 'ng-zorro-antd/affix';
 import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
 import { TranslateModule } from '@ngx-translate/core';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedLanguageSwitcherModule } from '../../../shared/feature/language-switcher/language-switcher.module';
 
 @NgModule({
   imports: [
@@ -32,7 +32,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     NzAffixModule,
     NzSegmentedModule,
     TranslateModule,
-    SharedModule,
+    SharedLanguageSwitcherModule,
   ],
   declarations: [LoginComponent],
 })

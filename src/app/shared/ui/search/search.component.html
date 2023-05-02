@@ -1,0 +1,36 @@
+<!-- <nz-input-group
+  style="margin-bottom: 20px"
+  nzSearch
+  nzSize="large"
+  [nzSuffix]="suffixIconSearch"
+>
+  <input
+    nz-input
+    type="text"
+    [placeholder]="'searchExercise' | translate"
+    (change)="onSearchChange($event)"
+  />
+</nz-input-group>
+<ng-template #suffixIconSearch>
+  <span nz-icon nzType="search"></span>
+</ng-template> -->
+
+<nz-input-group
+  style="margin-bottom: 20px"
+  nzSearch
+  nzSize="large"
+  [nzAddOnAfter]="suffixIconButton"
+>
+  <input
+    #search
+    type="text"
+    nz-input
+    [placeholder]="'searchExercise' | translate"
+    (change)="onSearchChange(search)"
+  />
+</nz-input-group>
+<ng-template #suffixIconButton>
+  <button nz-button nzType="primary" nzSearch (click)="onSearchChange(search)">
+    <span nz-icon nzType="search"></span>
+  </button>
+</ng-template>

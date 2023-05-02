@@ -6,7 +6,7 @@ import {
   UserLoginData,
   UserRegisterData,
   UserWithToken,
-} from '../../interfaces/user.interface';
+} from './interfaces/user.interface';
 import { ResultModel } from '../../interfaces/result.interface';
 import { tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';

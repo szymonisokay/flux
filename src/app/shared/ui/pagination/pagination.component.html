@@ -1,0 +1,12 @@
+<div class="pagination">
+  <nz-pagination
+    nzShowSizeChanger
+    [nzResponsive]="true"
+    [nzHideOnSinglePage]="true"
+    [nzPageSize]="pageSize"
+    [nzPageIndex]="page"
+    [nzTotal]="total"
+    [nzPageSizeOptions]="pageSizeOptions"
+    (nzPageIndexChange)="onPageChange($event)"
+  ></nz-pagination>
+</div>

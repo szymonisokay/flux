@@ -58,7 +58,6 @@ export class AuthEffects {
         this.authApiService.userInfo().pipe(
           map((userInfo) => authActions.userInfoSuccess({ user: userInfo })),
           catchError((error) => {
-            console.log(error.error);
             return of(authActions.userInfoFailure({ error: error.error })).pipe(
               tap(() => this.router.navigate(['/login']))
             );

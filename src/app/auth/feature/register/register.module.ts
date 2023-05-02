@@ -12,8 +12,8 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { RegisterComponent } from './register.component';
+import { SharedLanguageSwitcherModule } from '../../../shared/feature/language-switcher/language-switcher.module';
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -32,7 +32,7 @@ import { RegisterComponent } from './register.component';
     NzAffixModule,
     NzSegmentedModule,
     TranslateModule,
-    SharedModule,
+    SharedLanguageSwitcherModule,
   ],
 })
 export class RegisterModule {}

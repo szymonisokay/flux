@@ -1,11 +1,11 @@
 import { createAction, props } from '@ngrx/store';
-import { AuthActions } from '../../interfaces/auth-actions.interface';
+import { AuthActions } from './interfaces/auth-actions.interface';
 import {
   User,
   UserLoginData,
   UserRegisterData,
   UserWithToken,
-} from '../../interfaces/user.interface';
+} from './interfaces/user.interface';
 import { ResultModel } from '../../interfaces/result.interface';
 
 export const login = createAction(

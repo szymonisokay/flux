@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { AuthState } from '../../interfaces/auth-state.interface';
+import { AuthState } from './interfaces/auth-state.interface';
 import * as authActions from './auth.actions';
 import { saveToken, removeToken } from '../../utils/token/manage-token';
 
