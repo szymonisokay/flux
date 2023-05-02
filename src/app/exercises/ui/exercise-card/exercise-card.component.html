@@ -1,0 +1,35 @@
+<nz-card class="exercise-card" [nzCover]="coverTemplate">
+  <nz-card-meta [nzTitle]="titleTemplate"></nz-card-meta>
+  <div class="details">
+    <div class="details__single">
+      <span nz-icon nzType="star"></span>
+      <span>{{ exercise.Category }}</span>
+    </div>
+
+    <div class="details__single">
+      <span nz-icon nzType="skin"></span>
+      <span>{{ exercise.target.Primary[0] }}</span>
+    </div>
+
+    <div
+      [ngClass]="['details__single', getDifficultyClass(exercise.Difficulty)]"
+    >
+      <span nz-icon nzType="fire"></span>
+      <span>{{ exercise.Difficulty }}</span>
+    </div>
+  </div>
+
+  <ng-template #coverTemplate>
+    <video (click)="playVideo(videoPlayer)" #videoPlayer>
+      <source [src]="exercise.videoURL[0]" />
+    </video>
+  </ng-template>
+
+  <ng-template #titleTemplate>
+    <a [routerLink]="[exercise.id]">
+      <h4 nz-typography style="display: inline-block">
+        {{ exercise.exercise_name }}
+      </h4>
+    </a>
+  </ng-template>
+</nz-card>

@@ -1,0 +1,25 @@
+.exercise-card {
+  .details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+
+    &__single {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      &.beginner {
+        color: $accent-color;
+      }
+
+      &.intermediate {
+        color: $warn-color;
+      }
+
+      &.advanced {
+        color: $danger-color;
+      }
+    }
+  }
+}

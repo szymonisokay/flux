@@ -1,1 +1,27 @@
-dasdas
+<ng-container *ngIf="vm$ | async as vm">
+  <shared-search (searchChange)="onSearchChange($event)"></shared-search>
+
+  <ng-container *ngIf="vm.status === 'success'">
+    <shared-pagination-meta-data
+      [total]="vm.total"
+    ></shared-pagination-meta-data>
+
+    <div class="list">
+      <flux-exercise-card
+        *ngFor="let exercise of vm.exercises"
+        [exercise]="exercise"
+      ></flux-exercise-card>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="vm.status === 'loading'">
+    <shared-loading-cards [numberOfCards]="5"></shared-loading-cards>
+  </ng-container>
+
+  <shared-pagination
+    [page]="vm.page"
+    [total]="vm.total"
+    [pageSize]="10"
+    (pageChanged)="onPageChange($event)"
+  ></shared-pagination>
+</ng-container>
