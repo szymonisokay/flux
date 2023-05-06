@@ -28,3 +28,8 @@ export const exerciseStatusSelector = createSelector(
   exerciseFeatureSelector,
   (state: ExerciseState) => state.status
 );
+
+export const exerciseSearchValuesSelector = createSelector(
+  exerciseFeatureSelector,
+  (state: ExerciseState) => state.searchValues
+);

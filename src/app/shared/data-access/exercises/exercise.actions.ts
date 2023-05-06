@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { ExerciseActions } from './interfaces/exercise-actions.interface';
 import { Exercise } from './interfaces/exercise.interface';
+import { AdvancedSearchModel } from '../../../exercises/interfaces/advanced-search.interface';
 
 export const fetchExercises = createAction(ExerciseActions.FETCH_EXERCISES);
 
@@ -24,7 +25,7 @@ export const exerciseSearchTermChange = createAction(
   props<{ searchTerm: string }>()
 );
 
-export const exerciseSearchTermChangeSuccess = createAction(
-  ExerciseActions.EXERCISE_SEARCH_TERM_CHANGE_SUCCESS,
-  props<{ searchTerm: string; exercises: Exercise[] }>()
+export const exerciseAdvancedSearchValuesChange = createAction(
+  ExerciseActions.EXERCISE_ADVANCED_SEARCH_VALUES_CHANGE,
+  props<{ advancedSearchValue: AdvancedSearchModel }>()
 );

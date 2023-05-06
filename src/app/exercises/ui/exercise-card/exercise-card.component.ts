@@ -6,7 +6,7 @@ import {
 import { getDifficultyClass } from '../../../shared/utils/exercise/difficulty-class/difficulty-class';
 
 @Component({
-  selector: 'flux-exercise-card',
+  selector: 'ui-exercise-card',
   templateUrl: './exercise-card.component.html',
 })
 export class ExerciseCardComponent {

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { getRapidApiEndpoint } from '../../utils/endpoints/endpoints.config';
 import { environment } from '../../../../environment/environment';
 import { Exercise, ExerciseAttributes } from './interfaces/exercise.interface';
+import { Observable, of, shareReplay } from 'rxjs';
 
 const headers = {
   'content-type': 'application/octet-stream',
@@ -14,19 +15,19 @@ const headers = {
 export class ExerciseApiService {
   constructor(private http: HttpClient) {}
 
-  getAttributes() {
+  getAttributes(): Observable<ExerciseAttributes> {
     const endpoint = getRapidApiEndpoint('rapidApiAttributes').path;
 
     return this.http.get<ExerciseAttributes>(endpoint, { headers });
   }
 
-  getExercises() {
+  getExercises(): Observable<Exercise[]> {
     const endpoint = getRapidApiEndpoint('rapidApiExercises').path;
 
     return this.http.get<Exercise[]>(endpoint, { headers });
   }
 
-  getExercise(id: number) {
+  getExercise(id: number): Observable<Exercise> {
     const endpoint = getRapidApiEndpoint('rapidApiExercise').path.replace(
       '{id}',
       id.toString()

@@ -5,12 +5,14 @@ import {
   EventEmitter,
   ViewChild,
   TemplateRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { NzSegmentedOption, NzSegmentedOptions } from 'ng-zorro-antd/segmented';
 
 @Component({
   selector: 'shared-language-switcher',
   templateUrl: './language-switcher.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LanguageSwitcherComponent {
   @ViewChild('temp', { static: true, read: TemplateRef })

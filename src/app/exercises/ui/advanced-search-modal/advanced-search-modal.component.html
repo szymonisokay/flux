@@ -1,0 +1,91 @@
+<nz-modal
+  nzCentered
+  [nzVisible]="isVisible"
+  [nzTitle]="'advancedSearch' | translate"
+  (nzOnCancel)="onModalClose()"
+>
+  <div *nzModalContent>
+    <shared-search
+      [searchTerm]="searchValues.term"
+      (searchChange)="onSearchChange($event)"
+    ></shared-search>
+
+    <nz-space class="space-between" style="margin-top: 10px">
+      <nz-select
+        nzAllowClear
+        style="width: 45%"
+        nzSize="large"
+        [ngModel]="searchValues.category"
+        [nzPlaceHolder]="'category' | translate"
+        [nzDropdownMatchSelectWidth]="false"
+        (ngModelChange)="onValueChange($event, 'category')"
+      >
+        <nz-option
+          *ngFor="let category of categories"
+          [nzValue]="category"
+          [nzLabel]="category"
+        ></nz-option>
+      </nz-select>
+
+      <nz-select
+        nzAllowClear
+        style="width: 45%"
+        nzSize="large"
+        [ngModel]="searchValues.muscle"
+        [nzPlaceHolder]="'muscles' | translate"
+        [nzDropdownMatchSelectWidth]="false"
+        (ngModelChange)="onValueChange($event, 'muscle')"
+      >
+        <nz-option
+          *ngFor="let muscle of muscles"
+          [nzValue]="muscle"
+          [nzLabel]="muscle"
+        ></nz-option>
+      </nz-select>
+    </nz-space>
+
+    <nz-space class="space-between" style="margin-top: 20px">
+      <nz-select
+        nzAllowClear
+        style="width: 45%"
+        nzSize="large"
+        [ngModel]="searchValues.force"
+        [nzPlaceHolder]="'forces' | translate"
+        [nzDropdownMatchSelectWidth]="false"
+        (ngModelChange)="onValueChange($event, 'force')"
+      >
+        <nz-option
+          *ngFor="let force of forces"
+          [nzValue]="force"
+          [nzLabel]="force"
+        ></nz-option>
+      </nz-select>
+
+      <nz-select
+        nzAllowClear
+        style="width: 45%"
+        nzSize="large"
+        [ngModel]="searchValues.difficulty"
+        [nzPlaceHolder]="'difficulties' | translate"
+        [nzDropdownMatchSelectWidth]="false"
+        (ngModelChange)="onValueChange($event, 'difficulty')"
+      >
+        <nz-option
+          *ngFor="let difficulty of difficulties"
+          [nzValue]="difficulty"
+          [nzLabel]="difficulty"
+        ></nz-option>
+      </nz-select>
+    </nz-space>
+  </div>
+  <div *nzModalFooter style="display: flex; justify-content: center">
+    <button
+      nz-button
+      nzType="primary"
+      [nzLoading]="status === 'loading'"
+      (click)="onModalClose()"
+    >
+      {{ "showResults" | translate }}: {{ total }}
+    </button>
+  </div>
+</nz-modal>

@@ -1,5 +1,29 @@
 <ng-container *ngIf="vm$ | async as vm">
-  <shared-search (searchChange)="onSearchChange($event)"></shared-search>
+  <shared-search
+    [searchTerm]="vm.searchValues.term"
+    (searchChange)="onSearchChange($event)"
+  ></shared-search>
+
+  <div class="advanced-search">
+    <button nz-button nzType="text" (click)="onAdvancedSearchOpen()">
+      {{ "advancedSearch" | translate }}
+    </button>
+  </div>
+
+  <ui-advanced-search-tags
+    [tags]="getTags(vm.searchValues)"
+    (removeSearchCriteria)="onAdvancedSearchChange($event, vm.page)"
+  ></ui-advanced-search-tags>
+
+  <ui-advanced-search-modal
+    [isVisible]="vm.isModalVisible"
+    [status]="vm.status"
+    [total]="vm.total"
+    [searchValues]="vm.searchValues"
+    (closeModal)="onModalClose()"
+    (searchChange)="onSearchChange($event)"
+    (advancedSearchChange)="onAdvancedSearchChange($event, vm.page)"
+  ></ui-advanced-search-modal>
 
   <ng-container *ngIf="vm.status === 'success'">
     <shared-pagination-meta-data
@@ -7,10 +31,10 @@
     ></shared-pagination-meta-data>
 
     <div class="list">
-      <flux-exercise-card
+      <ui-exercise-card
         *ngFor="let exercise of vm.exercises"
         [exercise]="exercise"
-      ></flux-exercise-card>
+      ></ui-exercise-card>
     </div>
   </ng-container>
 

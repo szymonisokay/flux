@@ -11,7 +11,8 @@ export class ExerciseEffects {
       ofType(
         exerciseActions.fetchExercises,
         exerciseActions.exercisePageChange,
-        exerciseActions.exerciseSearchTermChange
+        exerciseActions.exerciseSearchTermChange,
+        exerciseActions.exerciseAdvancedSearchValuesChange
       ),
       switchMap(() =>
         this.exerciseApiService.getExercises().pipe(
@@ -25,22 +26,6 @@ export class ExerciseEffects {
       )
     )
   );
-
-  // searchExercises$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(exerciseActions.exerciseSearchTermChange),
-  //     exhaustMap(({ searchTerm }) =>
-  //       this.exerciseApiService.getExercises().pipe(
-  //         map((exercises) =>
-  //           exerciseActions.exerciseSearchTermChangeSuccess({
-  //             searchTerm,
-  //             exercises,
-  //           })
-  //         )
-  //       )
-  //     )
-  //   )
-  // );
 
   constructor(
     private actions$: Actions,

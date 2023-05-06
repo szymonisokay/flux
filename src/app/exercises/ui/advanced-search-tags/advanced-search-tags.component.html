@@ -1,0 +1,8 @@
+<div class="tags">
+  <nz-tag
+    nzMode="closeable"
+    (nzOnClose)="onTagClose(tag)"
+    *ngFor="let tag of tags"
+    >{{ tag.type | translate }}: <strong>{{ tag.value }}</strong></nz-tag
+  >
+</div>

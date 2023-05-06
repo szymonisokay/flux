@@ -1,16 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { ExerciseState } from './interfaces/exercise-state.interface';
+import {
+  ExerciseSearchValuesState,
+  ExerciseState,
+  initialState,
+} from './interfaces/exercise-state.interface';
 import * as exerciseActions from './exercise.actions';
 import { Exercise } from './interfaces/exercise.interface';
-
-const initialState: ExerciseState = {
-  exercises: null,
-  status: 'pending',
-  page: 1,
-  pageSize: 10,
-  total: 1,
-  searchTerm: '',
-};
 
 export const exerciseReducer = createReducer(
   initialState,
@@ -41,22 +36,68 @@ export const exerciseReducer = createReducer(
   on(exerciseActions.exerciseSearchTermChange, (state, action) => ({
     ...state,
     status: 'loading',
-    searchTerm: action.searchTerm,
+    searchValues: {
+      ...state.searchValues,
+      term: action.searchTerm,
+    },
+  })),
+  on(exerciseActions.exerciseAdvancedSearchValuesChange, (state, action) => ({
+    ...state,
+    status: 'loading',
+    searchValues: {
+      ...state.searchValues,
+      [action.advancedSearchValue.type]: action.advancedSearchValue.value,
+    },
   }))
 );
 
 const paginateArray = (exercises: Exercise[], state: ExerciseState) => {
-  const { page, pageSize, searchTerm } = state;
+  const { page, pageSize, searchValues } = state;
 
   const start = (page - 1) * pageSize;
   const end = page * pageSize;
 
-  const paginatedExercises = exercises.filter((exercise) =>
-    exercise.exercise_name.toLowerCase().includes(searchTerm)
-  );
+  const paginatedExercises = applyFiltering(exercises, searchValues);
 
   return {
     exercises: paginatedExercises.slice(start, end),
     total: paginatedExercises.length,
   };
+};
+
+const applyFiltering = (
+  exercises: Exercise[],
+  searchValues: ExerciseSearchValuesState
+) => {
+  let filteredExercises: Exercise[] = exercises;
+
+  filteredExercises = filteredExercises.filter((exercise) =>
+    exercise.exercise_name.toLowerCase().includes(searchValues.term)
+  );
+
+  filteredExercises = filteredExercises.filter((exercise) =>
+    searchValues.category
+      ? exercise.Category === searchValues.category
+      : exercise
+  );
+
+  filteredExercises = filteredExercises
+    .filter((exercise) => exercise.target)
+    .filter((exercise) =>
+      searchValues.muscle
+        ? exercise.target?.Primary?.includes(searchValues.muscle)
+        : exercise
+    );
+
+  filteredExercises = filteredExercises.filter((exercise) =>
+    searchValues.force ? exercise.Force === searchValues.force : exercise
+  );
+
+  filteredExercises = filteredExercises.filter((exercise) =>
+    searchValues.difficulty
+      ? exercise.Difficulty === searchValues.difficulty
+      : exercise
+  );
+
+  return filteredExercises;
 };
