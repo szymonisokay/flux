@@ -8,18 +8,6 @@
       display: flex;
       align-items: center;
       gap: 10px;
-
-      &.beginner {
-        color: $accent-color;
-      }
-
-      &.intermediate {
-        color: $warn-color;
-      }
-
-      &.advanced {
-        color: $danger-color;
-      }
     }
   }
 }

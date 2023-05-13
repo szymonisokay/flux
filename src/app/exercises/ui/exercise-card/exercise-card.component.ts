@@ -1,9 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {
-  Exercise,
-  ExerciseDifficulties,
-} from '../../../shared/data-access/exercises/interfaces/exercise.interface';
-import { getDifficultyClass } from '../../../shared/utils/exercise/difficulty-class/difficulty-class';
+import { Exercise } from '../../../shared/data-access/exercises/interfaces/exercise.interface';
 
 @Component({
   selector: 'ui-exercise-card',
@@ -14,9 +10,5 @@ export class ExerciseCardComponent {
 
   playVideo(video: HTMLVideoElement) {
     video.paused ? video.play() : video.pause();
-  }
-
-  getDifficultyClass(difficulty: string): string {
-    return getDifficultyClass(difficulty);
   }
 }

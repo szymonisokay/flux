@@ -1,0 +1,16 @@
+<nz-empty
+  [ngClass]="[fullHeight ? 'full-height' : '']"
+  [nzNotFoundContent]="contentTemplate"
+  [nzNotFoundFooter]="footerTemplate"
+>
+  <ng-template #contentTemplate>
+    <span *ngIf="showError">{{ "exerciseNotFound" | translate }}</span>
+    <span *ngIf="showNoData">{{ "noExercisesToShow" | translate }}</span>
+  </ng-template>
+
+  <ng-template #footerTemplate>
+    <button *ngIf="showError" nz-button nzType="primary" (click)="goBack()">
+      {{ "goBack" | translate }}
+    </button>
+  </ng-template>
+</nz-empty>

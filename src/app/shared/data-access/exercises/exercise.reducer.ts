@@ -28,6 +28,23 @@ export const exerciseReducer = createReducer(
     exercises: null,
     status: 'error',
   })),
+  on(exerciseActions.fetchExercise, (state, action) => ({
+    ...state,
+    status: 'loading',
+  })),
+  on(exerciseActions.fetchExerciseSuccess, (state, action) => {
+    return {
+      ...state,
+      exercises: action.exercise,
+      total: 1,
+      status: 'success',
+    };
+  }),
+  on(exerciseActions.fetchExerciseFailure, (state, action) => ({
+    ...state,
+    exercises: null,
+    status: 'error',
+  })),
   on(exerciseActions.exercisePageChange, (state, action) => ({
     ...state,
     page: action.page,

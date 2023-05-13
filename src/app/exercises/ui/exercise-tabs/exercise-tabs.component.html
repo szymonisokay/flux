@@ -1,0 +1,13 @@
+<ng-container *ngIf="template === 'details'">
+  <nz-list>
+    <nz-list-item *ngFor="let item of getDetails(exercise) | keyvalue">
+      <span nz-typography
+        ><strong> {{ item.key }}</strong></span
+      >
+      {{ item.value }}
+    </nz-list-item>
+  </nz-list>
+</ng-container>
+<ng-container *ngIf="template === 'description'"> description </ng-container>
+<ng-container *ngIf="template === 'steps'"> steps </ng-container>
+<ng-container *ngIf="template === 'videos'"> videos </ng-container>

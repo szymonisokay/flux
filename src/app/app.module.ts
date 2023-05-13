@@ -34,6 +34,8 @@ import { ExercisesModule } from './exercises/feature/exercises/exercises.module'
 import { ExercisesRoutingModule } from './exercises/feature/exercises/exercises-routing.module';
 import { SharedTopbarModule } from './shared/feature/topbar/topbar.module';
 import { SharedSidebarModule } from './shared/feature/sidebar/sidebar.module';
+import { ExerciseModule } from './exercises/feature/exercise/exercise.module';
+import { ExerciseRoutingModule } from './exercises/feature/exercise/exercise-routing.module';
 
 registerLocaleData(en);
 
@@ -79,6 +81,8 @@ registerLocaleData(en);
     DashboardRoutingModule,
     ExercisesModule,
     ExercisesRoutingModule,
+    ExerciseModule,
+    ExerciseRoutingModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },

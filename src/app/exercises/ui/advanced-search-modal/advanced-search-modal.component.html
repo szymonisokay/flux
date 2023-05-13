@@ -82,10 +82,11 @@
     <button
       nz-button
       nzType="primary"
+      nzSize="large"
       [nzLoading]="status === 'loading'"
       (click)="onModalClose()"
     >
-      {{ "showResults" | translate }}: {{ total }}
+      {{ "showResults" | translate }}: <strong> {{ total }}</strong>
     </button>
   </div>
 </nz-modal>

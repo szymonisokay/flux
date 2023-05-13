@@ -36,6 +36,11 @@
         [exercise]="exercise"
       ></ui-exercise-card>
     </div>
+
+    <ui-exercise-no-data
+      *ngIf="!vm.exercises.length"
+      [showNoData]="true"
+    ></ui-exercise-no-data>
   </ng-container>
 
   <ng-container *ngIf="vm.status === 'loading'">

@@ -4,9 +4,11 @@
 @import "./vendors/fonts.scss", "./vendors/global.scss", "./vendors/form.scss",
   "./vendors/ant-input.scss", "./vendors/ant-drawer.scss",
   "./vendors/ant-dropdown.scss", "./vendors/ant-pagination.scss",
-  "./vendors/ant-space.scss";
+  "./vendors/ant-space.scss", "./vendors/ant-page-header.scss",
+  "./vendors/ant-empty.scss";
 
 @import "./components/flex-wrapper.scss", "./components/auth.scss",
   "./components/language-switcher.scss", "./components/header.scss",
   "./components/dashboard.scss", "./components/list.scss",
-  "./components/exercise-card.scss", "./components/tags.scss";
+  "./components/exercise-card.scss", "./components/tags.scss",
+  "./components/exercise.scss";

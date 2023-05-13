@@ -15,6 +15,21 @@ export const fetchExercisesFailure = createAction(
   props<{ error: string }>()
 );
 
+export const fetchExercise = createAction(
+  ExerciseActions.FETCH_EXERCISE,
+  props<{ id: number }>()
+);
+
+export const fetchExerciseSuccess = createAction(
+  ExerciseActions.FETCH_EXERCISE_SUCCESS,
+  props<{ exercise: Exercise }>()
+);
+
+export const fetchExerciseFailure = createAction(
+  ExerciseActions.FETCH_EXERCISE_FAILURE,
+  props<{ error: string }>()
+);
+
 export const exercisePageChange = createAction(
   ExerciseActions.EXERCISE_PAGE_CHANGE,
   props<{ page: number }>()

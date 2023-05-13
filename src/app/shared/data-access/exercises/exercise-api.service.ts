@@ -27,7 +27,7 @@ export class ExerciseApiService {
     return this.http.get<Exercise[]>(endpoint, { headers });
   }
 
-  getExercise(id: number): Observable<Exercise> {
+  getExercise(id: number): Observable<Exercise | { error: string }> {
     const endpoint = getRapidApiEndpoint('rapidApiExercise').path.replace(
       '{id}',
       id.toString()

@@ -1,0 +1,37 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <ng-container *ngIf="vm.status === 'success'">
+    <shared-page-header
+      [title]="vm.exercise.exercise_name"
+    ></shared-page-header>
+    <div class="exercise-layout">
+      <video>
+        <source [src]="vm.exercise.videoURL[0]" />
+      </video>
+
+      <ui-exercise-meta-data
+        [exercise]="vm.exercise"
+        [compact]="true"
+      ></ui-exercise-meta-data>
+
+      <nz-tabset>
+        <nz-tab *ngFor="let tab of tabs" [nzTitle]="tab">
+          <ui-exercise-tabs
+            [template]="tab"
+            [exercise]="vm.exercise"
+          ></ui-exercise-tabs>
+        </nz-tab>
+      </nz-tabset>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="vm.status === 'error'">
+    <ui-exercise-no-data
+      [showError]="true"
+      [fullHeight]="true"
+    ></ui-exercise-no-data>
+  </ng-container>
+
+  <ng-container *ngIf="vm.status === 'loading'">
+    <shared-loading-cards [numberOfCards]="1"></shared-loading-cards>
+  </ng-container>
+</ng-container>

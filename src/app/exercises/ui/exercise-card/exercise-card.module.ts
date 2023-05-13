@@ -8,12 +8,14 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { ExerciseMetaDataModule } from '../exercise-meta-data/exercise-meta-data.module';
 
 @NgModule({
   imports: [
     CommonModule,
     TranslateModule,
     RouterModule,
+    ExerciseMetaDataModule,
     NzCardModule,
     NzIconModule,
     NzSpaceModule,

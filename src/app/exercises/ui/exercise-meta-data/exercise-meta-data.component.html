@@ -1,0 +1,32 @@
+<nz-space
+  [nzSplit]="splitTemplate"
+  [ngStyle]="{
+    width: '100%',
+    justifyContent: 'space-between',
+    padding: compact ? '0 25px' : ''
+  }"
+>
+  <nz-space *nzSpaceItem nzAlign="center" nzSize="small">
+    <span *nzSpaceItem nz-icon nzType="star"></span>
+    <span *nzSpaceItem>{{ exercise.Category }}</span>
+  </nz-space>
+
+  <nz-space *nzSpaceItem nzAlign="center" nzSize="small">
+    <span *nzSpaceItem nz-icon nzType="skin"></span>
+    <span *nzSpaceItem>{{ exercise.target.Primary[0] }}</span>
+  </nz-space>
+
+  <nz-space
+    *nzSpaceItem
+    nzAlign="center"
+    nzSize="small"
+    [ngClass]="['exercise-meta-data', getDifficultyClass(exercise.Difficulty)]"
+  >
+    <span *nzSpaceItem nz-icon nzType="fire"></span>
+    <span *nzSpaceItem>{{ exercise.Difficulty }}</span>
+  </nz-space>
+
+  <ng-template #splitTemplate>
+    <nz-divider nzType="vertical"></nz-divider>
+  </ng-template>
+</nz-space>

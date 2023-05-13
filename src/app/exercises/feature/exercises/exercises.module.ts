@@ -11,12 +11,14 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { AdvancedSearchModalModule } from '../../ui/advanced-search-modal/advanced-search-modal.module';
 import { AdvancedSearchTagsModule } from '../../ui/advanced-search-tags/advanced-search-tags.module';
+import { ExerciseNoDataModule } from '../../ui/exercise-no-data/exercise-no-data.module';
 
 @NgModule({
   imports: [
     CommonModule,
     TranslateModule,
     ExerciseCardModule,
+    ExerciseNoDataModule,
     AdvancedSearchModalModule,
     AdvancedSearchTagsModule,
     SharedLoadingCardsModule,

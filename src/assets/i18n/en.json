@@ -23,5 +23,13 @@
 
   "logout": "Log out",
   "exercises": "Exercises",
-  "trainingPlans": "Training plans"
+  "trainingPlans": "Training plans",
+  "advancedSearch": "Advanced search",
+  "searchExercise": "Search exercise",
+  "total": "Total",
+  "category": "Category",
+  "muscles": "Muscles",
+  "forces": "Forces",
+  "difficulties": "Difficulties",
+  "showResults": "Show results"
 }

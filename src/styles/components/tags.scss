@@ -2,9 +2,12 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
   overflow-x: auto;
   scrollbar-width: none;
+
+  &:not(:empty) {
+    margin-bottom: 10px;
+  }
 
   &::-webkit-scrollbar {
     display: none;
