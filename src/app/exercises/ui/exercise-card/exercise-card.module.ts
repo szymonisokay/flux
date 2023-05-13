@@ -9,6 +9,7 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { ExerciseMetaDataModule } from '../exercise-meta-data/exercise-meta-data.module';
+import { SharedVideoModule } from '../../../shared/ui/video/video.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { ExerciseMetaDataModule } from '../exercise-meta-data/exercise-meta-data
     TranslateModule,
     RouterModule,
     ExerciseMetaDataModule,
+    SharedVideoModule,
     NzCardModule,
     NzIconModule,
     NzSpaceModule,

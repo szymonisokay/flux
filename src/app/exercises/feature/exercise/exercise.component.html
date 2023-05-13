@@ -4,9 +4,7 @@
       [title]="vm.exercise.exercise_name"
     ></shared-page-header>
     <div class="exercise-layout">
-      <video>
-        <source [src]="vm.exercise.videoURL[0]" />
-      </video>
+      <shared-video [source]="vm.exercise.videoURL[0]"></shared-video>
 
       <ui-exercise-meta-data
         [exercise]="vm.exercise"

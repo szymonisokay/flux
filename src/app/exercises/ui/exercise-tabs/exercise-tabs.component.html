@@ -4,10 +4,30 @@
       <span nz-typography
         ><strong> {{ item.key }}</strong></span
       >
-      {{ item.value }}
+      <span class="text-gray-500">{{ item.value }}</span>
     </nz-list-item>
   </nz-list>
 </ng-container>
-<ng-container *ngIf="template === 'description'"> description </ng-container>
-<ng-container *ngIf="template === 'steps'"> steps </ng-container>
-<ng-container *ngIf="template === 'videos'"> videos </ng-container>
+<ng-container *ngIf="template === 'description'">
+  <div class="text-justify">
+    {{ exercise.details }}
+  </div>
+</ng-container>
+<ng-container *ngIf="template === 'steps'">
+  <div class="mt-2">
+    <nz-timeline>
+      <nz-timeline-item *ngFor="let item of exercise.steps">{{
+        item
+      }}</nz-timeline-item>
+    </nz-timeline>
+  </div>
+</ng-container>
+<ng-container *ngIf="template === 'videos'">
+  <div class="flex flex-col gap-5">
+    <shared-video
+      *ngFor="let video of exercise.videoURL"
+      [source]="video"
+      [showControls]="true"
+    ></shared-video>
+  </div>
+</ng-container>

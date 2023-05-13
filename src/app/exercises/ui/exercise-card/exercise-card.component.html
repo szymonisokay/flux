@@ -3,9 +3,7 @@
   <ui-exercise-meta-data [exercise]="exercise"></ui-exercise-meta-data>
 
   <ng-template #coverTemplate>
-    <video (click)="playVideo(videoPlayer)" #videoPlayer>
-      <source [src]="exercise.videoURL[0]" />
-    </video>
+    <shared-video [source]="exercise.videoURL[0]"></shared-video>
   </ng-template>
 
   <ng-template #titleTemplate>

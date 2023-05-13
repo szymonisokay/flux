@@ -12,6 +12,7 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { ExerciseTabsModule } from '../../ui/exercise-tabs/exercise-tabs.module';
+import { SharedVideoModule } from '../../../shared/ui/video/video.module';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { ExerciseTabsModule } from '../../ui/exercise-tabs/exercise-tabs.module'
     ExerciseTabsModule,
     SharedPageHeaderModule,
     SharedLoadingCardsModule,
+    SharedVideoModule,
     NzSpaceModule,
     NzIconModule,
     NzTabsModule,

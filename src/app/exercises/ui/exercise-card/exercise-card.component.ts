@@ -7,8 +7,4 @@ import { Exercise } from '../../../shared/data-access/exercises/interfaces/exerc
 })
 export class ExerciseCardComponent {
   @Input() exercise: Exercise;
-
-  playVideo(video: HTMLVideoElement) {
-    video.paused ? video.play() : video.pause();
-  }
 }
