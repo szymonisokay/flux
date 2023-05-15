@@ -1,10 +1,6 @@
 <nz-space
   [nzSplit]="splitTemplate"
-  [ngStyle]="{
-    width: '100%',
-    justifyContent: 'space-between',
-    padding: compact ? '0 25px' : ''
-  }"
+  [ngClass]="['justify-between w-full mt-3', compact ? 'py-0 px-7 mt-0' : '']"
 >
   <nz-space *nzSpaceItem nzAlign="center" nzSize="small">
     <span *nzSpaceItem nz-icon nzType="star"></span>

@@ -3,7 +3,7 @@
     <shared-page-header
       [title]="vm.exercise.exercise_name"
     ></shared-page-header>
-    <div class="exercise-layout">
+    <div class="flex flex-col gap-5 mt-5">
       <shared-video [source]="vm.exercise.videoURL[0]"></shared-video>
 
       <ui-exercise-meta-data
